@@ -16,6 +16,7 @@ String password = request.getParameter("password");
 
 
 
+
 session.setAttribute("user", user.loginUser(con.stmt, userName, password));
 
 con.closeStatement();
@@ -23,7 +24,10 @@ con.closeConnection();
 
 
 if(session.getAttribute("user") != null){
-	out.println("Welcome back "+ (String)(session.getAttribute("user"))+ " <a href=\"MainMenu.jsp\">Back to main</a>");
+	out.println("Welcome back "+ (String)(session.getAttribute("user"))+ "<br>"+" <a href=\"MainMenu.jsp\">Back to main</a>");
+}
+else{
+	out.println("There was an issue with your login. Please try again. "+"<br>"+" <a href=\"MainMenu.jsp\">Back to main</a>");
 }
 }
 
@@ -61,7 +65,7 @@ else if(request.getParameter("doneRegister") != null){
 	con.closeConnection();
 
 	if(session.getAttribute("user") != null){
-		out.println("Welcome back "+ (String)(session.getAttribute("user"))+ " <a href=\"MainMenu.jsp\">Back to main</a>");
+		out.println("Welcome back "+ (String)(session.getAttribute("user"))+"<br>" +" <a href=\"MainMenu.jsp\">Back to main</a>");
 	}
 	else{
 		out.println("THere was an issue with your registration.  Do you want to try again?");
