@@ -122,7 +122,7 @@ else if(request.getParameter("updateProfile") != null){
 	}
 	String[] result = user.alterProfile((String)session.getAttribute("user"), con.stmt, request.getParameter("password"), admin, request.getParameter("address"),request.getParameter("fullName"), request.getParameter("phoneNumber"));
 	
-	out.println("Updated User Profile Info")
+	out.println("Updated User Profile Info");
 	out.println("======================================================================================================" + "<br>");
 	out.println("User Name: " + session.getAttribute("user") + "<br>");
 	out.println("======================================================================================================" + "<br>");
