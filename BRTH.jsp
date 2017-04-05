@@ -23,7 +23,7 @@
             <a href = "BrowseTH.jsp">Browse THs</a>
           </li>
           <li>
-            <a href = "Reserve.jsp">Reserve THs</a>
+            <a href = "ReserveTH.jsp">Reserve THs</a>
           </li>
         </ul>
     <%
