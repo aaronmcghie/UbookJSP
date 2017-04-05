@@ -59,9 +59,34 @@ if(user == null){
 	<input type = submit name = changeProfile value = "Alter user profile"/>
 	</form>
 	
-	<br></br>
+	<br><br/>
+
+  <ul>
+		<li>
+			<a href = "TH.jsp">Register and edit your THs</a>
+		</li>
+		<li>
+			<a href = "BRTH.jsp">Browse and Reserve THs</a>
+		</li>
+		<li>
+			<a href = "RecordStay.jsp">Record a Stay</a>
+		</li>
+		<li>
+			<a href = "Feedback.jsp">Create and view feedback</a>
+		</li>
+		<li>
+			<a href = "Stats.jsp">Create and view Statistics</a>
+		</li>
+		<li>
+			<a href = "ViewStays.jsp">View your Stays</a>
+		</li>
+	</ul>
+	
+		<br></br>
 	<form action = "MainMenu.jsp" method=post >
 	<input type = submit name = logout value = "logout"/></form>
+	
+
 	<%
 	if(request.getParameter("logout") != null){
 		session.invalidate();
