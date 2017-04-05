@@ -23,8 +23,17 @@ con.closeStatement();
 con.closeConnection();
 
 
-if(session.getAttribute("user") != null){
+if(session.getAttribute("user") != null)
+{
 	out.println("Welcome back "+ (String)(session.getAttribute("user"))+ "<br>"+" <a href=\"MainMenu.jsp\">Back to main</a>");
+	if(user.checkAdmin(userName, con.stmt))
+	{
+		session.setAttribute("admin", true);
+	}
+	else
+	{
+		session.setAttribute("admin", false);	
+	}
 }
 else{
 	out.println("There was an issue with your login. Please try again. "+"<br>"+" <a href=\"MainMenu.jsp\">Back to main</a>");
@@ -33,7 +42,7 @@ else{
 
 else if(request.getParameter("registerUser") != null){
 	%>
-	Form1: login user name:
+	Registration Information:
 	<form action = "User.jsp" method=post onsubmit="return check_all_fields(this)">
 	UserName:<input type = "text" name = "userName"/><br/><br/>
 	Password:<input type = "text" name = "password"/><br/><br/>
@@ -97,6 +106,16 @@ else if(request.getParameter("viewProfile") != null){
 	out.println("======================================================================================================" + "<br>");
 	out.println("Phone Number: " + result[4] + "<br>");
 	out.println("======================================================================================================" + "<br>");
+	
+	%>
+	
+		
+	<form action = "User.jsp" method = post>
+	<input type = submit name = changeProfile value = "Alter user profile"/>
+	</form>
+	<br>
+	<%
+	
 	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
 }
 
@@ -120,9 +139,11 @@ else if(request.getParameter("updateProfile") != null){
 	String admin = null;
 	if(request.getParameter("admin") != null){
 		admin = "1";
+		session.setAttribute("admin", true);
 	}
 	else{
 		admin = "0";
+		session.setAttribute("admin", false);
 	}
 	String[] result = user.alterProfile((String)session.getAttribute("user"), con.stmt, request.getParameter("password"), admin, request.getParameter("address"),request.getParameter("fullName"), request.getParameter("phoneNumber"));
 	
@@ -139,6 +160,10 @@ else if(request.getParameter("updateProfile") != null){
 	out.println("Phone Number: " + result[4] + "<br>");
 	out.println("======================================================================================================" + "<br>");
 	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
+}
+
+else if (request.getParameter("viewFavorite") != null){
+	
 }
  %>
 <%
