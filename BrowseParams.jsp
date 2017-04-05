@@ -20,6 +20,7 @@
         <form action = "BrowseResults.jsp" method = "post">
         <%
           String params = request.getParameter("params");
+          session.setAttribute("params", params);
           if(params.contains("maximum_price")) {
             %>
             <p>Maximum Price:</p>
@@ -54,7 +55,7 @@
             %>
             <p>Keywords:</p>
             <p>Format: keyword1 keyword2 keyword3</p>
-            <input type = "text" name = "keywords"><br>
+            <input type = "text" name = "keywords"><br> 
             <%
           }
         %>

@@ -17,6 +17,21 @@
     %>
         <h1>Browse TH Results</h1>
         <p>Here are your results:</p>
+        <%
+          String params = session.getAttribute("params");
+          String minPrice = request.getParameter("min_price");
+          String maxPrice = request.getParameter("max_price");
+          String city = request.getParameter("city");
+          String state = request.getParameter("state");
+          String category = request.getParameter("category");
+          String keywords = request.getParameter("keywords");
+          String sortBy = "price";
+          Connector con = new Connector();
+          BRTH browse = new BRTH();
+          String result = browse.browseTHs(con.stmt, minPrice, maxPrice, city, state, category, keywords, sortBY, params);
+          ouit.println(result);
+        %>
+        
         <p><a href = "MainMenu.jsp">Return to Main Menu!</a></p>
     <%
       }
