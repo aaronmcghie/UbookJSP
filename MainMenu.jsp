@@ -50,21 +50,18 @@ if(user == null){
 	
 	
 	%>
-	<form action = "MainMenu.jsp" method=post >
-	<input type = submit name = logout value = "logout"/></form>
-	
-	<br></br>
 	
 	<form action = "User.jsp" method = post>
 	<input type = submit name = viewProfile value = "View user profile"/>
 	</form>
 	
-	<br></br>
-	
 	<form action = "User.jsp" method = post>
 	<input type = submit name = changeProfile value = "Alter user profile"/>
 	</form>
 	
+	<br></br>
+	<form action = "MainMenu.jsp" method=post >
+	<input type = submit name = logout value = "logout"/></form>
 	<%
 	if(request.getParameter("logout") != null){
 		session.invalidate();

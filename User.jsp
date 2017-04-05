@@ -81,12 +81,18 @@ else if(request.getParameter("doneRegister") != null){
 
 else if(request.getParameter("viewProfile") != null){
 	String[] result = user.setViewProfile((String)session.getAttribute("user"), con.stmt);
-		
-	out.println("User Name: " + session.getAttribute("user") + "\n");
-	out.println("Full Name: " + result[1] + "\n");
-	out.println("Admin(1 for yes, 0 for no): " + result[2] + "\n");
-	out.println("Address: " +result[3] + "\n");
-	out.println("Phone Number: " + result[4] + "\n");
+	out.println("User Profile");
+	out.println("======================================================================================================" + "<br>");
+	out.println("User Name: " + session.getAttribute("user") + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("Full Name: " + result[1] + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("Admin(1 for yes, 0 for no): " + result[2] + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("Address: " +result[3] + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("Phone Number: " + result[4] + "<br>");
+	out.println("======================================================================================================" + "<br>");
 	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
 }
 
@@ -116,12 +122,18 @@ else if(request.getParameter("updateProfile") != null){
 	}
 	String[] result = user.alterProfile((String)session.getAttribute("user"), con.stmt, request.getParameter("password"), admin, request.getParameter("address"),request.getParameter("fullName"), request.getParameter("phoneNumber"));
 	
-
-	out.println("User Name: " + session.getAttribute("user") + "\n");
-	out.println("Full Name: " + result[1] + "\n");
-	out.println("Admin(1 for yes, 0 for no): " + result[2] + "\n");
-	out.println("Address: " +result[3] + "\n");
-	out.println("Phone Number: " + result[4] + "\n");
+	out.println("Updated User Profile Info")
+	out.println("======================================================================================================" + "<br>");
+	out.println("User Name: " + session.getAttribute("user") + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("Full Name: " + result[1] + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("Admin(1 for yes, 0 for no): " + result[2] + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("Address: " +result[3] + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("Phone Number: " + result[4] + "<br>");
+	out.println("======================================================================================================" + "<br>");
 	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
 }
  %>
