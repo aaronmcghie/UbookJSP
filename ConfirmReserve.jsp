@@ -15,24 +15,21 @@
       }
       else {
     %>
-        <h1>TH Availabilities</h1>
-        <p>Availabilities for selected TH</p>
+        <h1>Reservation Added To Cart!</h1>
         <%
           Connector con = new Connector();
-          BRTH browse = new BRTH();
-          out.print(browse.showTHAvails(request.getParameter("id") ,con.stmt));
           con.closeStatement();
           con.closeConnection();
           if(session.getAttribute("reserveList") == null) {
-            session.setAttribute("reserveList", new ArrayList<Reserve>());
+            out.print("<p>Error <a href =\"BRTH.jsp\">Try again</a></p> ");
           }
-          session.setAttribute("hid", request.getParameter("id"));
+          else {
+            List reserveList = session.getAttribute("reserveList");
+            reserveList.Add(new Reserve(session.getAttribute("hid"), request.getAttribute("fromDate"), request.getAttribute("toDate")));
+            out.print("<p>Reservation added to your Reservation Cart!</p>");
+            out.print("<p><a href = \"ReserveTH.jsp\">Make another Reservation</a> or <a href = "ReserveCheckout.jsp">Checkout!</a></p>");
+          }
         %>
-        <form action = "ConfirmReserve.jsp" method = "post">
-          <p>Start Date:</p><input type = "date" name = "startDate">
-          <p>End Date:</p><input type = "date" name = "endDate">
-          <input type = "submit" name = "submitReserve" value = "submit">
-        </form>
     <%
       }
     %>
