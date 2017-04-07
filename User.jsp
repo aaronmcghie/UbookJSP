@@ -180,6 +180,7 @@ else if(request.getParameter("viewSeperation") != null){
 	First User: <input type = "text" name = "FirstName" value = "First User Name"/><br></br>
 	Second User:<input type = "text" name = "SecondName" value = "Second User Name"/><br><br/>
 	<input type = submit name = "updateSeperation" value = "See Seperation"/>
+	<a href=\"User.jsp\">Back to User</a>
 	<a href=\"MainMenu.jsp\">Back to main</a>
 	</form>
 	<%
