@@ -217,10 +217,6 @@ else{
 	</form>
 	
 	<form action = "User.jsp" method = post>
-	<input type = submit name = changeProfile value = "Change current favorite T"/>
-	</form>
-	
-	<form action = "User.jsp" method = post>
 	<input type = submit name = "viewSeperation" value = "View degree of seperation."/>
 	</form>
 	
@@ -237,6 +233,10 @@ else{
 		</form>
 		<%
 	}
+	%>
+	<a href=\"User.jsp\">Back to User actions</a>
+	<a href=\"MainMenu.jsp\">Back to main</a>
+	<%
 	
 }
  %>
