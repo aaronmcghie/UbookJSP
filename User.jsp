@@ -192,7 +192,7 @@ else if(request.getParameter("updateSeperation") != null){
 	if(result != -1){
 
 		out.println("======================================================================================================" + "<br>");
-		out.println(request.getParameter("FirstName") + " and " + request.getParameter("SecondName") + "degree of seperation is "+result.toString() + "." + "<br>");
+		out.println(request.getParameter("FirstName") + " and " + request.getParameter("SecondName") + "degree of seperation is "+Integer.toString(result) + "." + "<br>");
 		out.println("======================================================================================================" + "<br>");
 	}
 	else{
@@ -224,7 +224,7 @@ else{
 	<input type = submit name = "viewSeperation" value = "View degree of seperation."/>
 	</form>
 	
-	<%if(session.getAttribute("admin") != null && session.getAttribute("admin")){
+	<%if(session.getAttribute("admin") != null && (boolean)session.getAttribute("admin")){
 		%>
 		<form action = "User.jsp" method = post>
 		<input type = submit name = "viewTrusted" value = "View top trusted users."/>
@@ -235,8 +235,9 @@ else{
 		<form action = "User.jsp" method = post>
 		<input type = submit name = "viewUseful" value = "View top useful users."/>
 		</form>
+		<%
 	}
-	<%
+	
 }
  %>
 <%
