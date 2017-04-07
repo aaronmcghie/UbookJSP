@@ -25,7 +25,7 @@ con.closeConnection();
 
 if(session.getAttribute("user") != null)
 {
-	out.println("Welcome back "+ (String)(session.getAttribute("user"))+ "<br>"+" <a href=\"MainMenu.jsp\">Back to main</a>");
+	out.println("Welcome back "+ (String)(session.getAttribute("user"))+ "<br>"+" <a href=MainMenu.jsp>Back to main</a>");
 	if(user.checkAdmin(userName, con.stmt))
 	{
 		session.setAttribute("admin", true);
@@ -36,7 +36,7 @@ if(session.getAttribute("user") != null)
 	}
 }
 else{
-	out.println("There was an issue with your login. Please try again. "+"<br>"+" <a href=\"MainMenu.jsp\">Back to main</a>");
+	out.println("There was an issue with your login. Please try again. "+"<br>"+" <a href=MainMenu.jsp>Back to main</a>");
 }
 }
 
@@ -53,7 +53,7 @@ else if(request.getParameter("registerUser") != null){
 	
 	<input type = "submit" name="doneRegister" value="RegisterUser"/>
 	<br>
-	<a href=\"MainMenu.jsp\">Back to main</a>
+	<a href=MainMenu.jsp>Back to main</a>
 	</form>
 <% 
 }
@@ -76,7 +76,7 @@ else if(request.getParameter("doneRegister") != null){
 	con.closeConnection();
 
 	if(session.getAttribute("user") != null){
-		out.println("Welcome back "+ (String)(session.getAttribute("user"))+"<br>" +" <a href=\"MainMenu.jsp\">Back to main</a>");
+		out.println("Welcome back "+ (String)(session.getAttribute("user"))+"<br>" +" <a href=MainMenu.jsp>Back to main</a>");
 	}
 	else{
 		out.println("THere was an issue with your registration.  Do you want to try again?");
@@ -116,9 +116,9 @@ else if(request.getParameter("viewProfile") != null){
 	<input type = submit name = changeProfile value = "Alter user profile"/>
 	</form>
 	<br>
-	<a href=\"User.jsp\">Back to User actions</a>
+	<a href=User.jsp>Back to User actions</a>
 	<br>
-	<a href=\"MainMenu.jsp\">Back to main</a>
+	<a href=MainMenu.jsp>Back to main</a>
 	<%
 }
 
@@ -134,9 +134,9 @@ else if(request.getParameter("changeProfile") != null){
 	PhoneNumber:<input type = "text" name = "phoneNumber" value = "Phone Number"/><br/><br/>
 	<input type = "submit" name="updateProfile" value="updateProfile"/>
 	
-	<a href=\"User.jsp\">Back to User actions</a>
+	<a href=User.jsp>Back to User actions</a>
 	<br>
-	<a href=\"MainMenu.jsp\">Back to main</a>
+	<a href=MainMenu.jsp>Back to main</a>
 	</form>
 	
 	<%
@@ -167,9 +167,9 @@ else if(request.getParameter("updateProfile") != null){
 	out.println("Phone Number: " + result[4] + "<br>");
 	out.println("======================================================================================================" + "<br>");
 	%>
-	<a href=\"User.jsp\">Back to User actions</a>
+	<a href=User.jsp>Back to User actions</a>
 	<br>
-	<a href=\"MainMenu.jsp\">Back to main</a>
+	<a href=MainMenu.jsp>Back to main</a>
 	<%
 }
 
@@ -183,9 +183,9 @@ else if (request.getParameter("viewFavorite") != null){
 	out.println("House Name: " + result[1] + "<br>");
 	out.println("======================================================================================================" + "<br>");
 	%>
-	<a href=\"User.jsp\">Back to User actions</a>
+	<a href=User.jsp>Back to User actions</a>
 	<br>
-	<a href=\"MainMenu.jsp\">Back to main</a>
+	<a href=MainMenu.jsp>Back to main</a>
 	<%
 }
 
@@ -197,7 +197,7 @@ else if(request.getParameter("viewSeperation") != null){
 	<input type = submit name = "updateSeperation" value = "See Seperation"/>
 	<a href=\"User.jsp\">Back to User</a>
 	<br>
-	<a href=\"MainMenu.jsp\">Back to main</a>
+	<a href=MainMenu.jsp>Back to main</a>
 	</form>
 	<%
 }
@@ -218,9 +218,9 @@ else if(request.getParameter("updateSeperation") != null){
 		
 	}
 	%>
-	<a href=\"User.jsp\">Back to User actions</a>
+	<a href=User.jsp>Back to User actions</a>
 	<br>
-	<a href=\"MainMenu.jsp\">Back to main</a>
+	<a href=MainMenu.jsp">Back to main</a>
 	<%
 }
 else{
@@ -254,9 +254,9 @@ else{
 		<%
 	}
 	%>
-	<a href=\"User.jsp\">Back to User actions</a>
+	<a href=User.jsp>Back to User actions</a>
 	<br>
-	<a href=\"MainMenu.jsp\">Back to main</a>
+	<a href=MainMenu.jsp>Back to main</a>
 	<%
 	
 }
