@@ -24,15 +24,18 @@
           }
           else {
             List<Reserve> reserveList = (List<Reserve>)session.getAttribute("reserveList");
-            out.print("<p>If everything looks good, press checkout to finalize all reservations!</p><ul>");
+            BRTH browse = new BRTH();
             for(Reserve r : reserveList) {
-              out.print("<li>" + r.hid + " " + r.fromDate + " " + r.toDate + "</li>");
+              browse.insertReserve(user, r, con.stmt);
             }
-            out.print("</ul><p><a href = \"SubmitReserves.jsp\">Checkout</a></p>");
+            session.setAttribute("reserveList", null);
+            out.print("Your reservations have all been added!");
+            con.closeStatement();
+            con.closeConnection();
           }
-          con.closeStatement();
-          con.closeConnection();
+          
         %>
+        <p><a href = "Reserve.jsp">View your reservations</a> or <a href = "BRTH.jsp">Back to browse and reserve</a></p>
     <%
       }
     %>

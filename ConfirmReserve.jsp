@@ -1,4 +1,5 @@
 <%@ page language="java" import= "Ubook.*"%>
+<%@ page import = "java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -24,10 +25,10 @@
             out.print("<p>Error <a href =\"BRTH.jsp\">Try again</a></p> ");
           }
           else {
-            List reserveList = session.getAttribute("reserveList");
-            reserveList.Add(new Reserve(session.getAttribute("hid"), request.getAttribute("fromDate"), request.getAttribute("toDate")));
+            List<Reserve> reserveList = (List<Reserve>)session.getAttribute("reserveList");
+            reserveList.add(new Reserve((String)session.getAttribute("hid"), (String)request.getParameter("fromDate"), (String)request.getParameter("toDate")));
             out.print("<p>Reservation added to your Reservation Cart!</p>");
-            out.print("<p><a href = \"ReserveTH.jsp\">Make another Reservation</a> or <a href = "ReserveCheckout.jsp">Checkout!</a></p>");
+            out.print("<p><a href = \"ReserveTH.jsp\">Make another Reservation</a> or <a href = \"ReserveCheckout.jsp\">Checkout!</a></p>");
           }
         %>
     <%

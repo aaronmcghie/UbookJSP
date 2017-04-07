@@ -1,4 +1,5 @@
 <%@ page language="java" import= "Ubook.*"%>
+<%@ page import = "java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
@@ -29,8 +30,8 @@
           session.setAttribute("hid", request.getParameter("id"));
         %>
         <form action = "ConfirmReserve.jsp" method = "post">
-          <p>Start Date:</p><input type = "date" name = "startDate">
-          <p>End Date:</p><input type = "date" name = "endDate">
+          <p>Start Date:</p><input type = "date" name = "fromDate">
+          <p>End Date:</p><input type = "date" name = "toDate">
           <input type = "submit" name = "submitReserve" value = "submit">
         </form>
     <%
