@@ -52,6 +52,8 @@ else if(request.getParameter("registerUser") != null){
 	admin:<input type = "checkbox" name = "admin"/><br/><br/>
 	
 	<input type = "submit" name="doneRegister" value="RegisterUser"/>
+	<br>
+	<a href=\"MainMenu.jsp\">Back to main</a>
 	</form>
 <% 
 }
@@ -114,9 +116,10 @@ else if(request.getParameter("viewProfile") != null){
 	<input type = submit name = changeProfile value = "Alter user profile"/>
 	</form>
 	<br>
+	<a href=\"User.jsp\">Back to User actions</a>
+	<br>
+	<a href=\"MainMenu.jsp\">Back to main</a>
 	<%
-	
-	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
 }
 
 else if(request.getParameter("changeProfile") != null){
@@ -130,6 +133,10 @@ else if(request.getParameter("changeProfile") != null){
 	Address:<input type = "text" name = "address" value = "Address"/><br/><br/>
 	PhoneNumber:<input type = "text" name = "phoneNumber" value = "Phone Number"/><br/><br/>
 	<input type = "submit" name="updateProfile" value="updateProfile"/>
+	
+	<a href=\"User.jsp\">Back to User actions</a>
+	<br>
+	<a href=\"MainMenu.jsp\">Back to main</a>
 	</form>
 	
 	<%
@@ -159,7 +166,11 @@ else if(request.getParameter("updateProfile") != null){
 	out.println("======================================================================================================" + "<br>");
 	out.println("Phone Number: " + result[4] + "<br>");
 	out.println("======================================================================================================" + "<br>");
-	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
+	%>
+	<a href=\"User.jsp\">Back to User actions</a>
+	<br>
+	<a href=\"MainMenu.jsp\">Back to main</a>
+	<%
 }
 
 else if (request.getParameter("viewFavorite") != null){
@@ -171,7 +182,11 @@ else if (request.getParameter("viewFavorite") != null){
 	out.println("======================================================================================================" + "<br>");
 	out.println("House Name: " + result[1] + "<br>");
 	out.println("======================================================================================================" + "<br>");
-	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
+	%>
+	<a href=\"User.jsp\">Back to User actions</a>
+	<br>
+	<a href=\"MainMenu.jsp\">Back to main</a>
+	<%
 }
 
 else if(request.getParameter("viewSeperation") != null){
@@ -181,6 +196,7 @@ else if(request.getParameter("viewSeperation") != null){
 	Second User:<input type = "text" name = "SecondName" value = "Second User Name"/><br><br/>
 	<input type = submit name = "updateSeperation" value = "See Seperation"/>
 	<a href=\"User.jsp\">Back to User</a>
+	<br>
 	<a href=\"MainMenu.jsp\">Back to main</a>
 	</form>
 	<%
@@ -201,7 +217,11 @@ else if(request.getParameter("updateSeperation") != null){
 		out.println("======================================================================================================" + "<br>");
 		
 	}
-	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );	
+	%>
+	<a href=\"User.jsp\">Back to User actions</a>
+	<br>
+	<a href=\"MainMenu.jsp\">Back to main</a>
+	<%
 }
 else{
 	%>
@@ -235,6 +255,7 @@ else{
 	}
 	%>
 	<a href=\"User.jsp\">Back to User actions</a>
+	<br>
 	<a href=\"MainMenu.jsp\">Back to main</a>
 	<%
 	
