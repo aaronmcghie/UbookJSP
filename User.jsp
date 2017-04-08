@@ -223,6 +223,51 @@ else if(request.getParameter("updateSeperation") != null){
 	<a href=MainMenu.jsp">Back to main</a>
 	<%
 }
+else if(request.getParameter("viewTrusted") != null){
+	%>
+	<form action = "User.jsp" method=post>
+	Number of top trusted users:<input type = "text" name = "amountTrusted" value = "Amount of top trusted users"/><br/><br/>
+	<input type = "submit" name="updateTrusted" value="view top trusted users"/>
+	
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<% 
+}
+
+else if(request.getParameter("viewUseful") != null){
+	%>
+	<form action = "User.jsp" method=post>
+	Number of top useful users:<input type = "text" name = "amountUseful" value = "Amount of top useful users"/><br/><br/>
+	<input type = "submit" name="updateUseful" value="view top useful users"/>
+	
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<% 
+}
+
+else if(request.getParameter("updatedTrusted") != null){
+	List<userInfo> results = user.topTrustedUsers((String)request.getParameter("amountTrusted"), con.stmt);
+	
+	
+	
+	%>
+	<form action = "User.jsp" method=post>
+	Number of top trusted users:<input type = "text" name = "amount" value = "Amount of top trusted users"/><br/><br/>
+	<input type = "submit" name="updateTrusted" value="view top trusted users"/>
+	
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<% 
+}
+
+
+
 else{
 	%>
 		
