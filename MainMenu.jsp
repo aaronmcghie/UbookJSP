@@ -50,40 +50,13 @@ if(user == null){
 	
 	
 	%>
-	
-	<form action = "User.jsp" method = post>
-	<input type = submit name = viewProfile value = "View/alter user profile"/>
-	</form>
 
-	
-	<form action = "User.jsp" method = post>
-	<input type = submit name = viewFavorite value = "View/change favorite temporary housing"/>
-	</form>
-	
-	<form action = "User.jsp" method = post>
-	<input type = submit name = changeProfile value = "Change current favorite T"/>
-	</form>
-	
-	<form action = "User.jsp" method = post>
-	<input type = submit name = "viewSeperation" value = "View degree of seperation."/>
-	</form>
-	
-	<%if(session.getAttribute("admin") != null && session.getAttribute("admin")){
-		%>
-		<form action = "User.jsp" method = post>
-		<input type = submit name = "viewTrusted" value = "View top trusted users."/>
-		</form>
-		
-		<br></br>
-		
-		<form action = "User.jsp" method = post>
-		<input type = submit name = "viewUseful" value = "View top useful users."/>
-		</form>
-	}
-	
 	<br><br/>
 
   <ul>
+  		<li>
+  			<a href = User.jsp>User Actions</a>
+  		</li>
 		<li>
 			<a href = "TH.jsp">Register and edit your THs</a>
 		</li>

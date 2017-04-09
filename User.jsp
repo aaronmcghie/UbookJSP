@@ -25,7 +25,7 @@ con.closeConnection();
 
 if(session.getAttribute("user") != null)
 {
-	out.println("Welcome back "+ (String)(session.getAttribute("user"))+ "<br>"+" <a href=\"MainMenu.jsp\">Back to main</a>");
+	out.println("Welcome back "+ (String)(session.getAttribute("user"))+ "<br>"+" <a href=MainMenu.jsp>Back to main</a>");
 	if(user.checkAdmin(userName, con.stmt))
 	{
 		session.setAttribute("admin", true);
@@ -36,7 +36,7 @@ if(session.getAttribute("user") != null)
 	}
 }
 else{
-	out.println("There was an issue with your login. Please try again. "+"<br>"+" <a href=\"MainMenu.jsp\">Back to main</a>");
+	out.println("There was an issue with your login. Please try again. "+"<br>"+" <a href=MainMenu.jsp>Back to main</a>");
 }
 }
 
@@ -52,6 +52,8 @@ else if(request.getParameter("registerUser") != null){
 	admin:<input type = "checkbox" name = "admin"/><br/><br/>
 	
 	<input type = "submit" name="doneRegister" value="RegisterUser"/>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
 	</form>
 <% 
 }
@@ -74,7 +76,7 @@ else if(request.getParameter("doneRegister") != null){
 	con.closeConnection();
 
 	if(session.getAttribute("user") != null){
-		out.println("Welcome back "+ (String)(session.getAttribute("user"))+"<br>" +" <a href=\"MainMenu.jsp\">Back to main</a>");
+		out.println("Welcome back "+ (String)(session.getAttribute("user"))+"<br>" +" <a href=MainMenu.jsp>Back to main</a>");
 	}
 	else{
 		out.println("THere was an issue with your registration.  Do you want to try again?");
@@ -114,15 +116,16 @@ else if(request.getParameter("viewProfile") != null){
 	<input type = submit name = changeProfile value = "Alter user profile"/>
 	</form>
 	<br>
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
 	<%
-	
-	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
 }
 
 else if(request.getParameter("changeProfile") != null){
 	%>
 	
-	Form1: login user name:
+	Form1: Change User Information:
 	<form action = "User.jsp" method=post>
 	FullName:<input type = "text" name = "fullName" value = "Full Name"/><br/><br/>
 	Password:<input type = "password" name = "password" value = "password"/><br/><br/>
@@ -130,6 +133,10 @@ else if(request.getParameter("changeProfile") != null){
 	Address:<input type = "text" name = "address" value = "Address"/><br/><br/>
 	PhoneNumber:<input type = "text" name = "phoneNumber" value = "Phone Number"/><br/><br/>
 	<input type = "submit" name="updateProfile" value="updateProfile"/>
+	
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
 	</form>
 	
 	<%
@@ -159,10 +166,143 @@ else if(request.getParameter("updateProfile") != null){
 	out.println("======================================================================================================" + "<br>");
 	out.println("Phone Number: " + result[4] + "<br>");
 	out.println("======================================================================================================" + "<br>");
-	out.println("<a href=\"MainMenu.jsp\">Back to main</a>" );
+	%>
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	<%
 }
 
 else if (request.getParameter("viewFavorite") != null){
+	String [] result = user.viewFavoriteTH((String)session.getAttribute("user"), con.stmt);
+	
+	out.println("Favorite Temporary House"+"<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("House ID: " +result[0] + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	out.println("House Name: " + result[1] + "<br>");
+	out.println("======================================================================================================" + "<br>");
+	%>
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	<%
+}
+
+else if(request.getParameter("viewSeperation") != null){
+	%>
+	<form action = "User.jsp" method=post>
+	First User: <input type = "text" name = "FirstName" value = "First User Name"/><br></br>
+	Second User:<input type = "text" name = "SecondName" value = "Second User Name"/><br><br/>
+	<input type = submit name = "updateSeperation" value = "See Seperation"/>
+	<a href=\"User.jsp\">Back to User</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<%
+}
+
+else if(request.getParameter("updateSeperation") != null){
+	int result = user.degreeOfSeperation(request.getParameter("FirstName"), request.getParameter("SecondName"), con.stmt);
+	
+	if(result != -1){
+
+		out.println("======================================================================================================" + "<br>");
+		out.println(request.getParameter("FirstName") + " and " + request.getParameter("SecondName") + "degree of seperation is "+Integer.toString(result) + "." + "<br>");
+		out.println("======================================================================================================" + "<br>");
+	}
+	else{
+		out.println("======================================================================================================" + "<br>");
+		out.println(request.getParameter("FirstName") + " and " + request.getParameter("SecondName") + " are not connected by their favorite houses."+"<br>");
+		out.println("======================================================================================================" + "<br>");
+		
+	}
+	%>
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp">Back to main</a>
+	<%
+}
+else if(request.getParameter("viewTrusted") != null){
+	%>
+	<form action = "User.jsp" method=post>
+	Number of top trusted users:<input type = "text" name = "amountTrusted" value = "Amount of top trusted users"/><br/><br/>
+	<input type = "submit" name="updateTrusted" value="view top trusted users"/>
+	
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<% 
+}
+
+else if(request.getParameter("viewUseful") != null){
+	%>
+	<form action = "User.jsp" method=post>
+	Number of top useful users:<input type = "text" name = "amountUseful" value = "Amount of top useful users"/><br/><br/>
+	<input type = "submit" name="updateUseful" value="view top useful users"/>
+	
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<% 
+}
+
+else if(request.getParameter("updatedTrusted") != null){
+	List<userInfo> results = user.topTrustedUsers((String)request.getParameter("amountTrusted"), con.stmt);
+	
+	
+	
+	%>
+	<form action = "User.jsp" method=post>
+	Number of top trusted users:<input type = "text" name = "amount" value = "Amount of top trusted users"/><br/><br/>
+	<input type = "submit" name="updateTrusted" value="view top trusted users"/>
+	
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<% 
+}
+
+
+
+else{
+	%>
+		
+	<form action = "User.jsp" method = post>
+	<input type = submit name = viewProfile value = "View/alter user profile"/>
+	</form>
+
+	
+	
+	<form action = "User.jsp" method = post>
+	<input type = submit name = viewFavorite value = "View/change favorite temporary housing"/>
+	</form>
+	
+	<form action = "User.jsp" method = post>
+	<input type = submit name = "viewSeperation" value = "View degree of seperation."/>
+	</form>
+	
+	<%if(session.getAttribute("admin") != null && (boolean)session.getAttribute("admin")){
+		%>
+		<form action = "User.jsp" method = post>
+		<input type = submit name = "viewTrusted" value = "View top trusted users."/>
+		</form>
+		
+		<br></br>
+		
+		<form action = "User.jsp" method = post>
+		<input type = submit name = "viewUseful" value = "View top useful users."/>
+		</form>
+		<%
+	}
+	%>
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	<%
 	
 }
  %>
