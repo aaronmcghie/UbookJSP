@@ -255,14 +255,15 @@ else if(request.getParameter("updatedTrusted") != null){
 	
 	
 	%>
-	<form action = "User.jsp" method=post>
-	Number of top trusted users:<input type = "text" name = "amount" value = "Amount of top trusted users"/><br/><br/>
-	<input type = "submit" name="updateTrusted" value="view top trusted users"/>
-	
-	<a href=User.jsp>Back to User actions</a>
-	<br>
-	<a href=MainMenu.jsp>Back to main</a>
-	</form>
+	<ol>
+	<% 
+		for(int i = 0; i < results.size(); i++)
+		{
+			%>
+			<li>Username: <%results[i].userName %>  TrustedLevel: <%results[i].value %></li>
+		<%}
+	%>
+	</ol>
 	<% 
 }
 
