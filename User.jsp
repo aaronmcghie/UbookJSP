@@ -1,4 +1,5 @@
 <%@ page language="java" import= "Ubook.*"%>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,20 +8,19 @@
 <body>
 <% 
 
-Connector con = new Connector();
+
 User user = new User();
 
 if(request.getParameter("login") != null){
 String userName = request.getParameter("userName");
 String password = request.getParameter("password");
 
-
+Connector con = new Connector();
 
 
 session.setAttribute("user", user.loginUser(con.stmt, userName, password));
 
-con.closeStatement();
-con.closeConnection();
+
 
 
 if(session.getAttribute("user") != null)
@@ -34,10 +34,16 @@ if(session.getAttribute("user") != null)
 	{
 		session.setAttribute("admin", false);	
 	}
+	con.closeStatement();
+	con.closeConnection();
 }
 else{
 	out.println("There was an issue with your login. Please try again. "+"<br>"+" <a href=MainMenu.jsp>Back to main</a>");
+	con.closeStatement();
+	con.closeConnection();
 }
+
+
 }
 
 else if(request.getParameter("registerUser") != null){
@@ -68,7 +74,7 @@ else if(request.getParameter("doneRegister") != null){
 	if(request.getParameterValues("admin") != null){
 		admin = "1";
 	}
-	
+	Connector con = new Connector();
 	session.setAttribute("user", user.setUpUser(con.stmt, userName, password, fullName, address, phoneNumber, admin));
 
 
@@ -95,7 +101,10 @@ else if(request.getParameter("doneRegister") != null){
 }
 
 else if(request.getParameter("viewProfile") != null){
+	Connector con = new Connector();
 	String[] result = user.setViewProfile((String)session.getAttribute("user"), con.stmt);
+	con.closeStatement();
+	con.closeConnection();
 	out.println("User Profile");
 	out.println("======================================================================================================" + "<br>");
 	out.println("User Name: " + session.getAttribute("user") + "<br>");
@@ -152,7 +161,11 @@ else if(request.getParameter("updateProfile") != null){
 		admin = "0";
 		session.setAttribute("admin", false);
 	}
+	
+	Connector con = new Connector();
 	String[] result = user.alterProfile((String)session.getAttribute("user"), con.stmt, request.getParameter("password"), admin, request.getParameter("address"),request.getParameter("fullName"), request.getParameter("phoneNumber"));
+	con.closeStatement();
+	con.closeConnection();
 	
 	out.println("Updated User Profile Info");
 	out.println("======================================================================================================" + "<br>");
@@ -174,7 +187,10 @@ else if(request.getParameter("updateProfile") != null){
 }
 
 else if (request.getParameter("viewFavorite") != null){
+	Connector con = new Connector();
 	String [] result = user.viewFavoriteTH((String)session.getAttribute("user"), con.stmt);
+	con.closeStatement();
+	con.closeConnection();
 	
 	out.println("Favorite Temporary House"+"<br>");
 	out.println("======================================================================================================" + "<br>");
@@ -183,9 +199,43 @@ else if (request.getParameter("viewFavorite") != null){
 	out.println("House Name: " + result[1] + "<br>");
 	out.println("======================================================================================================" + "<br>");
 	%>
+	<form action = "User.jsp" method=post>
+	<input type = submit name = "changeFavorite" value = "Change Favorite"/>
 	<a href=User.jsp>Back to User actions</a>
 	<br>
 	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<%
+}
+
+
+else if(request.getParameter("changeFavorite") != null){
+	%>
+	<form action = "User.jsp" method=post>
+	First User: <input type = "text" name = "FavoriteTHID" value = "New THID"/><br></br>
+	<input type = submit name = "updateFavorite" value = "Update Favorite"/>
+	<a href=\"User.jsp\">Back to User</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
+	<%
+}
+
+else if(request.getParameter("updateFavorite") != null){
+	
+	Connector con = new Connector();
+	
+	user.setFavoriteTH((String)session.getAttribute("user"), con.stmt, request.getParameter("FavoriteTHID"));
+	
+	con.closeStatement();
+	con.closeConnection();
+	out.println("Your house was updated!" + "<br>")
+	%>
+	<form>
+	<a href=\"User.jsp\">Back to User</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	</form>
 	<%
 }
 
@@ -203,12 +253,18 @@ else if(request.getParameter("viewSeperation") != null){
 }
 
 else if(request.getParameter("updateSeperation") != null){
+	
+	Connector con = new Connector();
+	
 	int result = user.degreeOfSeperation(request.getParameter("FirstName"), request.getParameter("SecondName"), con.stmt);
+	
+	con.closeStatement();
+	con.closeConnection();
 	
 	if(result != -1){
 
 		out.println("======================================================================================================" + "<br>");
-		out.println(request.getParameter("FirstName") + " and " + request.getParameter("SecondName") + "degree of seperation is "+Integer.toString(result) + "." + "<br>");
+		out.println(request.getParameter("FirstName") + " and " + request.getParameter("SecondName") + " degree of seperation is "+Integer.toString(result) + "." + "<br>");
 		out.println("======================================================================================================" + "<br>");
 	}
 	else{
@@ -249,25 +305,55 @@ else if(request.getParameter("viewUseful") != null){
 	<% 
 }
 
-else if(request.getParameter("updatedTrusted") != null){
-	List<userInfo> results = user.topTrustedUsers((String)request.getParameter("amountTrusted"), con.stmt);
+else if(request.getParameter("updateTrusted") != null){
+	Connector con = new Connector();
+	List<UserInfo> results = user.topTrustedUsers((String)request.getParameter("amountTrusted"), con.stmt);
 	
-	
-	
+	con.closeStatement();
+	con.closeConnection();
 	%>
 	<ol>
 	<% 
 		for(int i = 0; i < results.size(); i++)
 		{
-			%>
-			<li>Username: <%results[i].userName %>  TrustedLevel: <%results[i].value %></li>
-		<%}
+			UserInfo current = results.get(i);
+			out.println("======================================================================================================" + "<br>");
+			out.println("Username: " + current.getName() + " Trusted Level: " + current.getValue() + "<br>");
+			out.println("======================================================================================================" + "<br>");
+		}
 	%>
 	</ol>
+
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
 	<% 
 }
 
+else if(request.getParameter("updateUseful") != null){
+	Connector con = new Connector();
+	List<UserInfo> results = user.topUsefulUsers((String)request.getParameter("amountTrusted"), con.stmt);
+	
+	con.closeStatement();
+	con.closeConnection();
+	%>
+	<ol>
+	<% 
+		for(int i = 0; i < results.size(); i++)
+		{
+			UserInfo current = results.get(i);
+			out.println("======================================================================================================" + "<br>");
+			out.println("Username: " + current.getName() + " Average Useful Rating: " + current.getValue() + "<br>");
+			out.println("======================================================================================================" + "<br>");
+		}
+	%>
+	</ol>
 
+	<a href=User.jsp>Back to User actions</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a>
+	<% 
+}
 
 else{
 	%>
@@ -291,8 +377,6 @@ else{
 		<form action = "User.jsp" method = post>
 		<input type = submit name = "viewTrusted" value = "View top trusted users."/>
 		</form>
-		
-		<br></br>
 		
 		<form action = "User.jsp" method = post>
 		<input type = submit name = "viewUseful" value = "View top useful users."/>
