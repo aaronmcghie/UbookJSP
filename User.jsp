@@ -229,7 +229,7 @@ else if(request.getParameter("updateFavorite") != null){
 	
 	con.closeStatement();
 	con.closeConnection();
-	out.println("Your house was updated!" + "<br>")
+	out.println("Your house was updated!" + "<br>");
 	%>
 	<form>
 	<a href=\"User.jsp\">Back to User</a>
