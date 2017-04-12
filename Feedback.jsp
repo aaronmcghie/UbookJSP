@@ -6,6 +6,7 @@
   </head>
   <body>
     <%
+    
       String user = (String)session.getAttribute("user");
       if(user == null){
     %>
@@ -14,9 +15,32 @@
     <%
       }
       else {
+    	  
+   	  UserFeedback userFeed = new UserFeedback();
+   	  THFeedback THFeed = new THFeedback();
     %>
         <h1>Create and View Feedback</h1>
         <p>Welcome to Feedback.</p>
+        
+    <%
+    else if(request.getParameter("createTHFeedback") != null){
+    	
+    }
+    %>
+    "createTH"<form action = "Feedback.jsp" method = post>
+	<input type = submit name = createTHFeedback value = "Review a TH you stayed at."/>
+	<input type = submit name = viewUsefulTHFeedback value = "View the most useful feedbacks for a TH"/>
+	<input type = submit name = reviewTHFeedback value = "Review a TH feedback left by another user"/>
+	</form>
+	
+	<form action = "Feedback.jsp" method = post>
+	<input type = submit name = "viewUserFeedback" value = "See a user's trusted level."/>
+	<input type = submit name = "reviewUser" value = "Say whether you trust a user."/>
+	</form>
+    
+    <a href=Feedback.jsp>Back to Feedback menu</a>
+	<br>
+	<a href=MainMenu.jsp>Back to main</a> 
     <%
       }
     %>
