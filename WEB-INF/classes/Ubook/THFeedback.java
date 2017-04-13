@@ -1,4 +1,4 @@
-package Ubook;
+repackage Ubook;
 
 import java.io.IOException;
 import java.sql.ResultSet;

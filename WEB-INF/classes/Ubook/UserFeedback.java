@@ -7,71 +7,24 @@ import java.sql.Statement;
 
 public class UserFeedback {
 
-	public void reviewUsers(String userName, Statement stmt) {
+	public boolean reviewUsers(String userName, Statement stmt, int trusted, String ratedUser) {
 
 		boolean done = false;
-		while(!done){
-			String ratedUser = null;
-			int trusted = 0;
-			String sql = null;
-			System.out.println("Please put the UserName of the user you wish to review.");
 			
-			try{
-				ratedUser = MainMenu.input.readLine();
-			}
-			catch(IOException e){
-				e.printStackTrace();
-			}
-			
-			
-			
-			System.out.println("Do you trust this user?  Press Y for yes, and N for no.");
-			
-			try{
-				if(MainMenu.input.readLine().toLowerCase().equals("y")){
-					trusted = 1;
-				}
-			}
-			catch(IOException e){
-				e.printStackTrace();
-			}
-			
-			System.out.println("This is what your review will look like.");
-			
-			System.out.println("Reviewed User: "+ratedUser+ ", Trusted(1 for yes, 0 for no): " +Integer.toString(trusted));
-			
-			System.out.println("Do you wish to submit this user review?  (Y/N)");
-			
-			try {
-				if(MainMenu.input.readLine().toLowerCase().equals("y")){
-				
-					sql = "INSERT INTO Trust VALUES('"+userName+"','"+ratedUser+"','"+Integer.toString(trusted)+"');";
-					
-					try{
-						stmt.executeUpdate(sql);
-					}
-					catch(SQLException e1){
-						e1.printStackTrace();
-					}
-					
-					System.out.println("Do you wish to review another user?  (Y/N)");
-					
-					try{
-						if(!MainMenu.input.readLine().toLowerCase().equals("y")){
-							done = true;
-						}
-					}
-					catch(IOException e){
-						e.printStackTrace();
-					}
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		String sql = null;
+	
+		sql = "INSERT INTO Trust VALUES('"+userName+"','"+ratedUser+"','"+Integer.toString(trusted)+"');";
+		
+		try{
+			stmt.executeUpdate(sql);
+			done = true;
 		}
-		System.out.println("Exiting User Review Menu.");
-		System.out.println("");
+		catch(SQLException e1){
+			e1.printStackTrace();
+		}
+		
+		return done;	
+		
 	}
 	
 	
