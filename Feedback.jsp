@@ -26,6 +26,22 @@
     else if(request.getParameter("createTHFeedback") != null){
     	
     }
+    
+	else if(request.getParameter("viewUsefulTHFeedback") != null){
+	    	
+	}
+	    
+	else if(request.getParameter("reviewTHFeedback") != null){
+		
+	}
+    
+	else if(request.getParameter("viewUserFeedback") != null){
+    	
+    }
+    
+	else if(request.getParameter("reviewUser") != null){
+    	
+    }
     %>
     "createTH"<form action = "Feedback.jsp" method = post>
 	<input type = submit name = createTHFeedback value = "Review a TH you stayed at."/>
