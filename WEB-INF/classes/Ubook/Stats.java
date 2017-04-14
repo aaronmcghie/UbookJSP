@@ -8,8 +8,10 @@ import java.util.List;
 
 public class Stats {
 
-	public void popularTH(String userName, String amount, Statement stmt) {
+	public List<HouseInfo> popularTH(String userName, String amount, Statement stmt) {
 		// TODO Auto-generated method stub
+		List<HouseInfo> results = new ArrayList<HouseInfo>();
+		
 		String sql = "SELECT V.hid, T.name, T.category, T.address, T.URL, T.phoneNumber, T.yearBuilt, T.city, T.state, T.login, COUNT(V.hid) AS houseCount FROM "
 				+ "Visits V, TH T WHERE V.hid = T.hid GROUP BY V.hid, T.name, T.category, T.address, T.URL, T.phoneNumber, T.yearBuilt, T.city, T.state, T.login ORDER BY houseCount DESC "
 				+ "LIMIT " + amount + ";" ;
@@ -18,26 +20,18 @@ public class Stats {
 		
 		try {
 			rs = stmt.executeQuery(sql);
-			if(!rs.isBeforeFirst()){
-				System.out.println("There are no houses that have been stayed at yet in the system.");
-				
-				}
+			
 			
 			while(rs.next()){
-				System.out.println("House ID: " + rs.getString("V.hid")+ ", House Name: " + rs.getString("T.name")+", House Category: " + rs.getString("T.category")+", House Address: " + rs.getString("T.address")
-				 + ", " +rs.getString("T.city")+", " + rs.getString("T.state")+", House Year Built: " + rs.getString("T.yearBuilt")+", House Phone Number: " + rs.getString("T.phoneNumber")+", House URL: " + rs.getString("T.URL")+
-						", House Owner: " + rs.getString("T.login"));
+				results.add(new HouseInfo(rs.getString("V.hid"),rs.getString("T.name"),rs.getString("T.category"),rs.getString("T.address"),rs.getString("T.city"),rs.getString("T.state"),rs.getString("T.yearBuilt"),rs.getString("T.phoneNumber"),rs.getString("T.URL"),rs.getString("T.login")));
+
 			}
 			}
 		 catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("");
-		
-		System.out.println("Exiting popular TH menu");
-		
-		System.out.println("");
+		return results;
 	}
 
 	public void expensiveTH(String userName, String amount, Statement stmt) {
