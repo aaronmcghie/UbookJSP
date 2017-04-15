@@ -16,7 +16,22 @@
       else {
     %>
         <h1>Your THs</h1>
-        <p>Welcome to your THs.</p>
+        <p>Your TH Options:</p>
+        <ul>
+          <li>
+            <a href = "NewTH.jsp">Register a new TH</a>
+          </li>
+          <li>
+            <a href = "ViewTHs.jsp">View/Edit your THs</a>
+          </li>
+          <li>
+            <a href = "Keywords.jsp">View/Create Keywords on THs</a>
+          </li>
+          <li>
+            <a href = "Avails.jsp">View/Update Availability on THs</a>
+          </li>
+        </ul>
+        <p><a href = "MainMenu.jsp">Return Home</a></p>
     <%
       }
     %>
