@@ -184,7 +184,7 @@ public class User {
 	public void setFavoriteTH(String userName, Statement stmt, String TH) {
 		// TODO Auto-generated method stub
 		boolean done = false;
-		//String choice = null;
+		String choice = null;
 		String sql = null;
 
 		int haveFavorite = 0;
@@ -233,10 +233,10 @@ public class User {
 				}
 				else{
 					if(haveFavorite != 0){
-						sql = "UPDATE Favorites SET hid = '" +TH+ "', fvdate = '"+currentTime+"' WHERE login = '" + userName + "';";
+						sql = "UPDATE Favorites SET hid = '" +choice+ "', fvdate = '"+currentTime+"' WHERE login = '" + userName + "';";
 					}
 					else{
-						sql = "INSERT INTO Favorites(hid, fvdate, login) VALUES('" +TH + "','"+currentTime+"', '"+userName+"');";
+						sql = "INSERT INTO Favorites(hid, fvdate, login) VALUES('" +choice + "','"+currentTime+"', '"+userName+"');";
 					}
 					
 					//output = "Your new Favorite will be, House ID: " + choice + ", Favorite Date: "+currentTime;
@@ -282,7 +282,7 @@ public class User {
 		
 	}
 
-	public String[] viewFavoriteTH(String userName, Statement stmt){
+	public String[] viewFavoriteTH(String userName, Statement stmt, boolean viewResult){
 		ResultSet rs = null;
 		String [] haveFavorite = new String[2];
 		String sql = "Select F.hid, T.name FROM Favorites F, TH T WHERE F.login = '"+userName+"' AND F.hid = T.hid";
@@ -293,7 +293,7 @@ public class User {
 //				System.out.println("You do not have a favorite house currently selected.");
 //			}
 			//else{
-				//if(viewResult){
+				if(viewResult){
 					while(rs.next()){
 						//System.out.println("Your current favorite place to stay is:");
 						//System.out.println("House ID: "+ rs.getString("F.hid") + ", House name: " + rs.getString("T.name"));
@@ -301,7 +301,7 @@ public class User {
 						haveFavorite[0] = rs.getString("F.hid");
 						haveFavorite[1] = rs.getString("T.name");
 					}
-				//}
+				}
 			//}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
