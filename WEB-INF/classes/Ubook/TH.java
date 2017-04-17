@@ -214,7 +214,25 @@ public class TH {
 		System.out.println("");
 	}
 
-	
+	public HouseInfo THInfo(String THID, Statement stmt){
+		String sql = "SELECT T.hid, T.name, T.category, T.address, T.URL, T.phoneNumber, T.yearBuilt, T.city, T.state, T.login FROM "
+				+ "TH T WHERE T.hid = '"+THID+"' ;" ;
+		ResultSet rs = null;
+		HouseInfo result = null;
+		try {
+			rs = stmt.executeQuery(sql);
+			
+			
+			while(rs.next()){
+				result = new HouseInfo(rs.getString("T.hid"),rs.getString("T.name"),rs.getString("T.category"),rs.getString("T.address"),rs.getString("T.city"),rs.getString("T.state"),rs.getString("T.yearBuilt"),rs.getString("T.phoneNumber"),rs.getString("T.URL"),rs.getString("T.login"), "0'");
+			}
+		}
+		 catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
 
 	

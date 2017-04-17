@@ -91,7 +91,7 @@ public class Stay {
 		
 		try {
 			rs = stmt.executeQuery(sql);
-			if(rs.isBeforeFirst()){
+			if(!rs.isBeforeFirst()){
 				return null;
 			}
 			output.append("<ul>");

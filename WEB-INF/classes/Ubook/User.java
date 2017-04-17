@@ -190,7 +190,7 @@ public class User {
 		int haveFavorite = 0;
 		while(!done){
 			
-			if(viewFavoriteTH(userName, stmt, true)[0] != null){
+			if(viewFavoriteTH(userName, stmt)[0] != null){
 				haveFavorite = 1;
 			}
 			
@@ -493,7 +493,7 @@ public class User {
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				//System.out.println("User Login: " + rs.getString("F.login") + ", Usefulness of Feedback Average: "+rs.getString("AVGuse") );
-				result.add(new UserInfo(rs.getString("T.login2"),rs.getString("AVGuse")));
+				result.add(new UserInfo(rs.getString("F.login"),rs.getString("AVGuse")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

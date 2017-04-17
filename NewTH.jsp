@@ -21,11 +21,7 @@
           <p>Address: <input type = "text" name = "address"></p>
           <p>City: <input type = "text" name = "city"></p>
           <p>State: <input type = "text" name = "state"></p>
-<<<<<<< HEAD
-          <p>Phone Number: <input type = "text" name = "phoneNumber"></p>
-=======
           <p>Phone Number: <input type = "tel" name = "phoneNumber"></p>
->>>>>>> 3d1c3887077b21f546a53c0a95a0a656924c1f11
           <p>Year Built: <input type = "number" name = "yearBuilt" min = "1800" max = "2100></p>
           <p>Category: <input type = "text" name = "category"></p>
           <p>URL: <input type = "url" name = "URL"></p>
