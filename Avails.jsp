@@ -25,7 +25,7 @@
     	
     	if(request.getParameter("seeAvailabilities") != null){
    			%>
-  		    <form action = "Keywords.jsp" method=post>
+  		    <form action = "Avails.jsp" method=post>
   			House ID:<input type = "text" name = "THID" value = "0"/><br>
   			<input type = "submit" name="updateSeeAvailability" value="view results"/><br>
   			</form>
@@ -42,7 +42,7 @@
 				out.println("======================================================================================================" + "<br>");
 				out.println("Availability #"+ Integer.toString(i+1) + "<br>");
 				out.println("======================================================================================================" + "<br>");
-				out.println("HouseID: " + (String)request.getParameter("THID")+ "<br>");
+				out.println("Availiability ID: " + current.getPID() + "<br>");
 				out.println("======================================================================================================" + "<br>");
 				out.println("Availability: " + current.getFrom()+  " to "+ current.getTo() +"<br>");
 				out.println("======================================================================================================" + "<br>");
@@ -56,7 +56,7 @@
     	
     	else if(request.getParameter("changeAvailability") != null){
    			%>
-  		    <form action = "Keywords.jsp" method=post>
+  		    <form action = "Avails.jsp" method=post>
   			House ID:<input type = "text" name = "THID" value = "0"/><br>
   			Availability ID:<input type = "text" name = "PID" value = "0"/><br>
   			From Date: <input type = "text" name = "from" value = "2017-06-01"/><br>
@@ -69,7 +69,7 @@
     	
     	else if(request.getParameter("updateChangeAvailability") != null){
    			Connector con = new Connector();
-   			if(dates.createChangeAvailability((String)session.getParameter("THID"), con.stmt, (String)session.getParameter("PID"), (String)session.getParameter("from"), (String)session.getParameter("to"), (String)session.getParameter("price"))){
+   			if(dates.createChangeAvailability((String)request.getParameter("THID"), con.stmt, (String)request.getParameter("PID"), (String)request.getParameter("from"), (String)request.getParameter("to"), (String)request.getParameter("price"))){
    				out.println("The availability was successfully changed!");
    			}
    			else{
@@ -84,7 +84,7 @@
     	
     	else if(request.getParameter("addAvailability") != null){
    			%>
-  		    <form action = "Keywords.jsp" method=post>
+  		    <form action = "Avails.jsp" method=post>
   			House ID:<input type = "text" name = "THID" value = "0"/><br>
   			From Date: <input type = "text" name = "from" value = "2017-06-01"/><br>
   			To Date: <input type = "text" name = "to" value = "2017-06-01"/><br>
@@ -97,7 +97,7 @@
     	else if(request.getParameter("updateAddAvailability") != null){
    			Connector con = new Connector();
 			
-    		if(dates.createAvailability((String)session.getParameter("THID"), con.stmt, (String)session.getParameter("from"), (String)session.getParameter("to"), (String)session.getParameter("price"))){
+    		if(dates.createAvailability((String)request.getParameter("THID"), con.stmt, (String)request.getParameter("from"), (String)request.getParameter("to"), (String)request.getParameter("price"))){
    				out.println("The availability was successfully added!");
    			}
    			else{
@@ -108,9 +108,9 @@
     	con.closeConnection();
     	}
     	
-    	else if(request.getParameter("removeKeywords") != null){
+    	else if(request.getParameter("removeAvailability") != null){
    			%>
-  		    <form action = "Keywords.jsp" method=post>
+  		    <form action = "Avails.jsp" method=post>
   			House ID:<input type = "text" name = "THID" value = "0"/><br>
   			Availability ID:<input type = "text" name = "PID" value = "0"/><br>
   			<input type = "submit" name="updateRemoveAvailability" value="view results"/><br>
@@ -122,7 +122,7 @@
     	else if(request.getParameter("updateRemoveAvailability") != null){
    			Connector con = new Connector();
 			
-    		if(dates.removeAvailability((String)session.getParameter("THID"), con.stmt, (String)session.getParameter("PID"))){
+    		if(dates.removeAvailability((String)request.getParameter("THID"), con.stmt, (String)request.getParameter("PID"))){
    				out.println("The availability was successfully removed!");
    			}
    			else{
@@ -136,7 +136,7 @@
     	
     	%>
     <br>
-   	<form action = "Keywords.jsp" method = post>
+   	<form action = "Avails.jsp" method = post>
 	<input type = submit name = "seeAvailabilities" value = "See the availabilities of a house"/><br>
 	<input type = submit name = "changeAvailability" value = "Change an existing availability"/><br>
 	<input type = submit name = "addAvailability" value = "Add a new availability"/><br>
