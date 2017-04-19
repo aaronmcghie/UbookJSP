@@ -34,10 +34,7 @@ if(user == null){
 	UserName:<input type = "text" name = "userName"/><br/><br/>
 	Password:<input type = "password" name = "password"/><br/><br/>
 	<input type = "submit" name="login" value="login"/>
-	</form>
-	<br></br>
-	<br></br>
-	<form>
+	<br>
 	<input type = submit name = registerUser value= "Register a new user" />
 	</form>
 	

@@ -67,7 +67,7 @@ else if(request.getParameter("doneRegister") != null){
 
 	String userName = request.getParameter("userName");
 	String password = request.getParameter("password");
-	String fullName = request.getParameter("FullName");
+	String fullName = request.getParameter("fullName");
 	String address = request.getParameter("address");
 	String phoneNumber = request.getParameter("phoneNumber");
 	String admin = "0";
@@ -85,7 +85,7 @@ else if(request.getParameter("doneRegister") != null){
 		out.println("Welcome back "+ (String)(session.getAttribute("user"))+"<br>" +" <a href=MainMenu.jsp>Back to main</a>");
 	}
 	else{
-		out.println("THere was an issue with your registration.  Do you want to try again?");
+		out.println("There was an issue with your registration.  Do you want to try again?");
 				
 		%>
 		
