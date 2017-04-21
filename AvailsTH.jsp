@@ -33,6 +33,8 @@
           <p>Start Date:</p><input type = "date" name = "fromDate">
           <p>End Date:</p><input type = "date" name = "toDate">
           <input type = "submit" name = "submitReserve" value = "submit">
+          <br>
+          <a href=MainMenu.jsp>Back to main</a>
         </form>
     <%
       }

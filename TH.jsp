@@ -15,7 +15,7 @@
       }
       else {
     	  if(request.getParameter("id") != null){
-    		  Connector con = new Connector();
+    		Connector con = new Connector();
 			TH checkHouse = new TH();
 			HouseInfo current = checkHouse.THInfo((String)request.getParameter("id"), con.stmt);
 			out.println("======================================================================================================" + "<br>");

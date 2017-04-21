@@ -27,12 +27,14 @@
         Connector con = new Connector();
         List<String> checkoutPids = (List<String>)session.getAttribute("checkoutPids");
         if(checkoutPids == null) checkoutPids = new ArrayList<String>();
+        out.println("Here are your reservations" + "<br>");
         out.print(stays.showReservations((String)session.getAttribute("user"), con.stmt, checkoutPids));
         con.closeStatement();
         con.closeConnection();
     }
     else if(request.getParameter("seeStays") != null){
         Connector con = new Connector();
+        out.println("Here are your Stays" + "<br>");
         out.print(stays.viewStays((String)session.getAttribute("user"), con.stmt, "TH.jsp"));
         con.closeStatement();
         con.closeConnection();

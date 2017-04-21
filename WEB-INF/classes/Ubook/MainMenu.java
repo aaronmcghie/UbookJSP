@@ -13,8 +13,9 @@ public class MainMenu {
 	public static void main(String[] args){
 		try{
 			Connector con = new Connector();
-			BRTH reserve = new BRTH();
-			String res = reserve.browseTHs(con.stmt, "20", "", "", "", "", "", "price", "minimum_price");
+			User test = new User();
+//			BRTH reserve = new BRTH();
+//			String res = reserve.browseTHs(con.stmt, "20", "", "", "", "", "", "price", "minimum_price");
 		}
 		catch(Exception e) {
 			

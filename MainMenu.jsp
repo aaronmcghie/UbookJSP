@@ -70,7 +70,7 @@ if(user == null){
 			<a href = "Stats.jsp">Create and view Statistics</a>
 		</li>
 		<li>
-			<a href = "ViewStays.jsp">View your Stays</a>
+			<a href = "ViewStays.jsp">View your Stays and Reservations</a>
 		</li>
 	</ul>
 	

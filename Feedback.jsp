@@ -94,7 +94,7 @@
 	    <form action = "Feedback.jsp" method=post>
 		Feedback ID to rate:<input type = "text" name = "FID" value = "FID"/><br>
 		Score(0 for useless, 1 for somewhat useful, 2 for highly useful):<input type = "text" name = "FIDScore" value= "Score"/><br>
-		<input type = "submit" name="updateReviewTHFeed" value="view top useful Feedbacks for a TH"/><br>
+		<input type = "submit" name="updateReviewTHFeed" value="Submit your Review"/><br>
 		</form>
 	    <%
 	}
@@ -144,7 +144,7 @@
 	    <form action = "Feedback.jsp" method=post>
 		User to rate:<input type = "text" name = "userName" value = "User Name"/><br>
 		Trusted:<input type = "checkbox" name = "trusted"/><br>
-		<input type = "submit" name="updateReviewUser" value="submit user review"/><br>
+		<input type = "submit" name="updateReviewUser" value="Submit user review"/><br>
 		</form>
 	    <%
     }
@@ -157,7 +157,7 @@
     	}
     	
     	
-    	if(THFeed.reviewFeedback((String)session.getAttribute("user"), con.stmt, Integer.toString(trusted), request.getParameter("userName"))){
+    	if(userFeed.reviewUsers((String)session.getAttribute("user"), con.stmt, trusted, request.getParameter("userName"))){
 			%>
 			<h2>You have successfully submitted your user Review!</h2>
 			<%    		
@@ -173,6 +173,7 @@
     
     %>
     <form action = "Feedback.jsp" method = post>
+    <br>
 	<input type = submit name = createTHFeedback value = "Review a TH you stayed at."/><br>
 	<input type = submit name = viewUsefulTHFeedback value = "View the most useful feedbacks for a TH"/><br>
 	<input type = submit name = reviewTHFeedback value = "Review a TH feedback left by another user"/><br>

@@ -75,8 +75,9 @@ else if(request.getParameter("doneRegister") != null){
 		admin = "1";
 	}
 	Connector con = new Connector();
-	session.setAttribute("user", user.setUpUser(con.stmt, userName, password, fullName, address, phoneNumber, admin));
-
+	if(!userName.isEmpty() && !password.isEmpty()){
+		session.setAttribute("user", user.setUpUser(con.stmt, userName, password, fullName, address, phoneNumber, admin));
+	}
 
 	con.closeStatement();
 	con.closeConnection();
@@ -212,9 +213,9 @@ else if (request.getParameter("viewFavorite") != null){
 else if(request.getParameter("changeFavorite") != null){
 	%>
 	<form action = "User.jsp" method=post>
-	First User: <input type = "text" name = "FavoriteTHID" value = "New THID"/><br></br>
-	<input type = submit name = "updateFavorite" value = "Update Favorite"/>
-	<a href=\"User.jsp\">Back to User</a>
+	Favorite THID: <input type = "text" name = "FavoriteTHID" value = "0"/><br>
+	<input type = submit name = "updateFavorite" value = "Update Favorite"/><br>
+	<a href=User.jsp>Back to User</a>
 	<br>
 	<a href=MainMenu.jsp>Back to main</a>
 	</form>
@@ -225,14 +226,18 @@ else if(request.getParameter("updateFavorite") != null){
 	
 	Connector con = new Connector();
 	
-	user.setFavoriteTH((String)session.getAttribute("user"), con.stmt, request.getParameter("FavoriteTHID"));
-	
+	if(user.setFavoriteTH((String)session.getAttribute("user"), con.stmt, request.getParameter("FavoriteTHID"))){
+		out.println("Your favorite house was updated!" + "<br>");
+	}
+	else{
+		out.println("Your favorite house was not updated due to an issue with the server." + "<br>");
+	}
 	con.closeStatement();
 	con.closeConnection();
-	out.println("Your house was updated!" + "<br>");
+
 	%>
 	<form>
-	<a href=\"User.jsp\">Back to User</a>
+	<a href=User.jsp>Back to User</a>
 	<br>
 	<a href=MainMenu.jsp>Back to main</a>
 	</form>
@@ -277,7 +282,7 @@ else if(request.getParameter("updateSeperation") != null){
 	%>
 	<a href=User.jsp>Back to User actions</a>
 	<br>
-	<a href=MainMenu.jsp">Back to main</a>
+	<a href=MainMenu.jsp>Back to main</a>
 	<%
 }
 else if(request.getParameter("viewTrusted") != null){

@@ -25,6 +25,8 @@
           con.closeStatement();
           con.closeConnection();
         %>
+        
+        <a href=MainMenu.jsp>Back to main</a>
     <%
       }
     %>

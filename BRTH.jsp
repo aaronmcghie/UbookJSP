@@ -26,6 +26,8 @@
             <a href = "ReserveTH.jsp">Reserve THs</a>
           </li>
         </ul>
+        
+        <a href=MainMenu.jsp>Back to main</a>
     <%
       }
     %>
