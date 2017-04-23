@@ -59,7 +59,7 @@
   		    <form action = "Keywords.jsp" method=post>
   			House ID:<input type = "text" name = "THID" value = "0"/><br>
   			Keyword ID:<input type = "text" name = "WID" value = "0"/><br>
-  			<input type = "submit" name="updateRemoveKeyword" value="view results"/><br>
+  			<input type = "submit" name="updateRemoveKeyword" value="Submit"/><br>
   			</form>
   		    <%
     	}
@@ -85,7 +85,7 @@
   			House ID:<input type = "text" name = "THID" value = "0"/><br>
   			Keyword to add:<input type = "text" name = "word" value = "0"/><br>
   			Language of Keyword:<input type = "text" name = "language" value = "0"/><br>
-  			<input type = "submit" name="updateAddKeyword" value="view results"/><br>
+  			<input type = "submit" name="updateAddKeyword" value="Submit"/><br>
   			</form>
   		    <%
     	}
