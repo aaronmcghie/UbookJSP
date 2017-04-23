@@ -34,10 +34,7 @@ if(user == null){
 	UserName:<input type = "text" name = "userName"/><br/><br/>
 	Password:<input type = "password" name = "password"/><br/><br/>
 	<input type = "submit" name="login" value="login"/>
-	</form>
-	<br></br>
-	<br></br>
-	<form>
+	<br>
 	<input type = submit name = registerUser value= "Register a new user" />
 	</form>
 	
@@ -50,40 +47,13 @@ if(user == null){
 	
 	
 	%>
-	
-	<form action = "User.jsp" method = post>
-	<input type = submit name = viewProfile value = "View/alter user profile"/>
-	</form>
 
-	
-	<form action = "User.jsp" method = post>
-	<input type = submit name = viewFavorite value = "View/change favorite temporary housing"/>
-	</form>
-	
-	<form action = "User.jsp" method = post>
-	<input type = submit name = changeProfile value = "Change current favorite T"/>
-	</form>
-	
-	<form action = "User.jsp" method = post>
-	<input type = submit name = "viewSeperation" value = "View degree of seperation."/>
-	</form>
-	
-	<%if(session.getAttribute("admin") != null && session.getAttribute("admin")){
-		%>
-		<form action = "User.jsp" method = post>
-		<input type = submit name = "viewTrusted" value = "View top trusted users."/>
-		</form>
-		
-		<br></br>
-		
-		<form action = "User.jsp" method = post>
-		<input type = submit name = "viewUseful" value = "View top useful users."/>
-		</form>
-	}
-	
 	<br><br/>
 
   <ul>
+  		<li>
+  			<a href = User.jsp>User Actions</a>
+  		</li>
 		<li>
 			<a href = "TH.jsp">Register and edit your THs</a>
 		</li>
@@ -100,7 +70,7 @@ if(user == null){
 			<a href = "Stats.jsp">Create and view Statistics</a>
 		</li>
 		<li>
-			<a href = "ViewStays.jsp">View your Stays</a>
+			<a href = "ViewStays.jsp">View your Stays and Reservations</a>
 		</li>
 	</ul>
 	

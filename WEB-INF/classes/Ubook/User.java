@@ -181,105 +181,47 @@ public class User {
 		return rs;
 	}
 
-	public void setFavoriteTH(String userName, Statement stmt, String TH) {
+	public boolean setFavoriteTH(String userName, Statement stmt, String TH) {
 		// TODO Auto-generated method stub
 		boolean done = false;
-		//String choice = null;
 		String sql = null;
 
 		int haveFavorite = 0;
-		while(!done){
-			
-			if(viewFavoriteTH(userName, stmt, true)[0] != null){
-				haveFavorite = 1;
+		
+		if(viewFavoriteTH(userName, stmt)[0] != null){
+			haveFavorite = 1;
+		}
+
+		java.util.Date dt = new java.util.Date();
+		
+		java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+		String currentTime = sdf.format(dt);
+
+		
+		if(TH.equals("DELETE")){
+			sql = "DELETE FROM Favorites WHERE login = '" + userName + "';";
+			//output = "You will have no favorite after this.";
+		}
+		else{
+			if(haveFavorite != 0){
+				sql = "UPDATE Favorites SET hid = '" +TH+ "', fvdate = '"+currentTime+"' WHERE login = '" + userName + "';";
+			}
+			else{
+				sql = "INSERT INTO Favorites(hid, fvdate, login) VALUES('" +TH + "','"+currentTime+"', '"+userName+"');";
 			}
 			
-//			System.out.println("Here is the list of THs you have stayed at.");
-//			
-//			//Show Houses user has stayed at.
-//			
-//			System.out.println("Do you wish to register a new favorite or remove your current favorite?(Y/N)");
-			
-//			try {
-//				choice = MainMenu.input.readLine();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			
-//			if(!choice.toLowerCase().equals("y")){
-//				done = true;
-//				
-//			}
-			//else{
-				java.util.Date dt = new java.util.Date();
-				
-				java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
-				String currentTime = sdf.format(dt);
-//				System.out.println("What house ID do you wish to register as your favorite?  Leave blank to remove/not register a favorite.");
-//				
-//				try {
-//					choice = MainMenu.input.readLine();
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-				
-				//String output = null;
-				
-				if(TH.equals("DELETE")){
-					sql = "DELETE FROM Favorites WHERE login = '" + userName + "';";
-					//output = "You will have no favorite after this.";
-				}
-				else{
-					if(haveFavorite != 0){
-						sql = "UPDATE Favorites SET hid = '" +TH+ "', fvdate = '"+currentTime+"' WHERE login = '" + userName + "';";
-					}
-					else{
-						sql = "INSERT INTO Favorites(hid, fvdate, login) VALUES('" +TH + "','"+currentTime+"', '"+userName+"');";
-					}
-					
-					//output = "Your new Favorite will be, House ID: " + choice + ", Favorite Date: "+currentTime;
-				}
-				
-				
-				//System.out.println(output);
-				//System.out.println("Do you wish to keep this change?  (Y/N)");
-				
-//				try {
-//					choice = MainMenu.input.readLine();
-//				} catch (IOException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				
-//				if(choice.toLowerCase().equals("y")){
-					try {
-						stmt.executeUpdate(sql);
-						//System.out.println("Your Favorite has been updated!");
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				//}
-
-			//}
-			
-//			System.out.println("Do you wish to change/remove your favorite again? (Y/N)");
-//			try {
-//				choice = MainMenu.input.readLine();
-//			} catch (IOException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
-//			
-//			if(!choice.toLowerCase().equals("y")){
-//				done = true;
-//			}
-			
 		}
-		//System.out.println("Exitting the Favorite TH menu.");
 		
+
+			try {
+				stmt.executeUpdate(sql);
+				done = true;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		return done;
 	}
 
 	public String[] viewFavoriteTH(String userName, Statement stmt){
@@ -293,7 +235,6 @@ public class User {
 //				System.out.println("You do not have a favorite house currently selected.");
 //			}
 			//else{
-				//if(viewResult){
 					while(rs.next()){
 						//System.out.println("Your current favorite place to stay is:");
 						//System.out.println("House ID: "+ rs.getString("F.hid") + ", House name: " + rs.getString("T.name"));
@@ -301,7 +242,7 @@ public class User {
 						haveFavorite[0] = rs.getString("F.hid");
 						haveFavorite[1] = rs.getString("T.name");
 					}
-				//}
+				
 			//}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -493,7 +434,7 @@ public class User {
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				//System.out.println("User Login: " + rs.getString("F.login") + ", Usefulness of Feedback Average: "+rs.getString("AVGuse") );
-				result.add(new UserInfo(rs.getString("T.login2"),rs.getString("AVGuse")));
+				result.add(new UserInfo(rs.getString("F.login"),rs.getString("AVGuse")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

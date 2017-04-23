@@ -18,5 +18,29 @@ public class reviewedFeedback {
 		lFBdate = fbdate;
 		lAvgScore = avg_score;
 	}
+	
+	public String getFID(){
+		return lFid;
+	}
+	
+	public String getScore(){
+		return lScore;
+	}
+	
+	public String getText(){
+		return lText;
+	}
+	
+	public String getLogin(){
+		return lLogin;
+	}
+	
+	public String getDate(){
+		return lFBdate;
+	}
+	
+	public String getUseScore(){
+		return lAvgScore;
+	}
 
 }

@@ -15,18 +15,8 @@
       }
       else {
     %>
-        <h1>Reserve THs</h1>
-        <p>Welcome to Reserve THs.</p>
-        <p>Choose a TH to reserve</p>
-        <%
-          Connector con = new Connector();
-          BRTH browse = new BRTH();
-          out.print(browse.showTHs(con.stmt));
-          con.closeStatement();
-          con.closeConnection();
-        %>
-        
-        <a href=MainMenu.jsp>Back to main</a>
+        <h1>Record Stays</h1>
+        <p>Welcome to Record Stays.</p>
     <%
       }
     %>

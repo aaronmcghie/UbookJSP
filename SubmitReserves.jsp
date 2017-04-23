@@ -35,7 +35,7 @@
           }
           
         %>
-        <p><a href = "Reserve.jsp">View your reservations</a> or <a href = "BRTH.jsp">Back to browse and reserve</a></p>
+        <p><a href = "ViewStays.jsp">View your reservations</a> or <a href = "BRTH.jsp">Back to browse and reserve</a></p>
     <%
       }
     %>

@@ -15,6 +15,35 @@
       }
       else {
               session.setAttribute("hid", request.getParameter("id"));
+              
+              if(request.getParameter("id") != null){
+          		Connector con = new Connector();
+      			TH checkHouse = new TH();
+      			HouseInfo current = checkHouse.THInfo((String)request.getParameter("id"), con.stmt);
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("HouseID: " + current.getID()+ "<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("TH Name: " + current.getName()+ "<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("TH category: " + current.getCategory()+ "<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("TH address: " + current.getAddress()+ "<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("TH URL: " + current.getURL()+ "<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("TH Phone Number: " + current.getNumber()+ "<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("TH Year Built: " + current.getYear()+ "<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("TH City: " + current.getCity()+  " TH State: " +current.getState()+"<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("TH Owner: " + current.getOwner()+ "<br>");
+      			out.println("======================================================================================================" + "<br>");
+      			out.println("<br>");
+      			
+            	con.closeStatement();
+            	con.closeConnection();
+          	  }
     %>
         <h1>Edit TH</h1>
         <form action = "ConfirmEditTH.jsp" method = "post">
