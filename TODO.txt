@@ -1,12 +1,16 @@
 
 
+
 (UNKNOWN, but assumed to be working right in current code) Supposed to be multiple favorite ths
-Most expensive houses not sorted by price (Ryan)
-Most popular houses seems to be sorted ascending (Ryan)
-Register user labels no spaces - Aaron
+Most expensive houses not sorted by price (Ryan) - done
+Most popular houses seems to be sorted ascending (Ryan) - current
+
+Register user labels no spaces - Aaron - Done
+user actions link links to self in user page - Not really important, bottom priority
+Supposed to be multiple favorite ths
 labels for th fields in statistics are wrong
 View Keywords says "TH Name: 'Keyword'"
-Some view results buttons should say submit because they don't actually view anything - Aaron
+Some view results buttons should say submit because they don't actually view anything - Aaron - Done
 Remove keyword seems broken
 Make url textbox type text - Aaron - Done
 typo in link from browse th to avails - Aaron - Fixed
