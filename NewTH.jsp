@@ -24,7 +24,7 @@
           <p>Phone Number: <input type = "tel" name = "phoneNumber"></p>
           <p>Year Built: <input type = "number" name = "yearBuilt" min = "1800" max = "2100"></p>
           <p>Category: <input type = "text" name = "category"></p>
-          <p>URL: <input type = "url" name = "URL"></p>
+          <p>URL: <input type = "text" name = "URL"></p>
           <p><input type = "submit" value = "Submit!"></p>
         </form>
     <%

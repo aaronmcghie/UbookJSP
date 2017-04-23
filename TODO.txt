@@ -7,7 +7,7 @@ labels for th fields in statistics are wrong
 View Keywords says "TH Name: 'Keyword'"
 Some view results buttons should say submit because they don't actually view anything
 Remove keyword seems broken
-Make url textbox type text - Aaron
-typo in link from browse th to avails - Aaron
-add checkout and back to reserves link in avails - Aaron
-reserve checkout broken - Aaron
+Make url textbox type text - Aaron - Done
+typo in link from browse th to avails - Aaron - Fixed
+add checkout and back to reserves link in avails - Aaron - Done
+reserve checkout broken - Aaron - Fixed

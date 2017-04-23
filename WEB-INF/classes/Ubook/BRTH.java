@@ -68,7 +68,8 @@ public class BRTH {
  			ResultSet rs = null;
 			rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				output.append("<p><a href = \"AvlailsTH.jsp?id=" + rs.getString("H.hid") + "\">Name: " + rs.getString("H.name") + ", Category: " + rs.getString("H.category") + " ");
+				System.out.println("8765");
+				output.append("<p><a href = \"AvailsTH.jsp?id=" + rs.getString("H.hid") + "\">Name: " + rs.getString("H.name") + ", Category: " + rs.getString("H.category") + " ");
 				if(rs.getString("A.priceNight") != null) output.append("  Price per Night as Low as: $" + rs.getString("A.priceNight") + " ");
 				else output.append("  This house currently has no availabilities" + " ");
 				output.append("  Address: " + rs.getString("H.address") + ", " + rs.getString("H.city") + " " + rs.getString("H.state") + " ");
@@ -197,9 +198,9 @@ public class BRTH {
 			sql = "DELETE FROM Period WHERE pid = " + removePeriod + ";";
 			stmt.executeUpdate(sql);
 			
-			TH suggest = new TH();
-			
-			suggest.THSuggestions(r.hid, userName, stmt);
+//			TH suggest = new TH();
+//			
+//			suggest.THSuggestions(r.hid, userName, stmt);
 		}
 		catch (SQLException e) {
 			
