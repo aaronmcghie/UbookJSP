@@ -14,8 +14,8 @@ public class HouseInfo {
 	String houseOwner = null;
 	String count = null;
 	
-	public HouseInfo(String id, String name, String category, String address, String url, String number,
-			String year, String city, String state, String owner, String num) {
+	public HouseInfo(String id, String name, String category, String address, String city, String state,
+			String year, String number, String url, String owner, String num) {
 		// TODO Auto-generated constructor stub
 		houseID = id;
 		houseName = name;

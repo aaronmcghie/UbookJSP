@@ -34,10 +34,17 @@
     	else if(request.getParameter("updatePopHouses") != null){
    			Connector con = new Connector();
     		List<HouseInfo> results = viewStats.popularTH(request.getParameter("amountPopTH"), con.stmt);  		
-			
+			String category = "";
     		for(int i = 0; i < results.size(); i++)
 			{
 				HouseInfo current = results.get(i);
+				if(!category.equals(current.getCategory())){
+					category = current.getCategory();
+					out.println("======================================================================================================" + "<br><br>");
+					out.println("Category: "+ category + "<br>");
+					out.println("======================================================================================================" + "<br><br>");
+				}
+				
 				out.println("======================================================================================================" + "<br>");
 				out.println("House #"+ Integer.toString(i+1) + "<br>");
 				out.println("======================================================================================================" + "<br>");
@@ -79,10 +86,17 @@
     	else if(request.getParameter("updateExpensiveHouses") != null){
    			Connector con = new Connector();
     		List<HouseInfo> results = viewStats.expensiveTH(request.getParameter("amountExpTH"), con.stmt);  		
-			
+			String category = "";
     		for(int i = 0; i < results.size(); i++)
 			{
 				HouseInfo current = results.get(i);
+				
+				if(!category.equals(current.getCategory())){
+					category = current.getCategory();
+					out.println("======================================================================================================" + "<br><br>");
+					out.println("Category: "+ category + "<br>");
+					out.println("======================================================================================================" + "<br><br>");
+				}
 				out.println("======================================================================================================" + "<br>");
 				out.println("House #"+ Integer.toString(i+1) + "<br>");
 				out.println("======================================================================================================" + "<br>");
@@ -124,10 +138,17 @@
     	else if(request.getParameter("updatePopCat") != null){
    			Connector con = new Connector();
     		List<HouseInfo> results = viewStats.ratedTH(request.getParameter("amountPopCat"), con.stmt);  		
-			
+			String category = "";
     		for(int i = 0; i < results.size(); i++)
 			{
 				HouseInfo current = results.get(i);
+				
+				if(!category.equals(current.getCategory())){
+					category = current.getCategory();
+					out.println("======================================================================================================" + "<br><br>");
+					out.println("Category: "+ category + "<br>");
+					out.println("======================================================================================================" + "<br><br>");
+				}
 				out.println("======================================================================================================" + "<br>");
 				out.println("House #"+ Integer.toString(i+1) + "<br>");
 				out.println("======================================================================================================" + "<br>");

@@ -1,12 +1,14 @@
 
+
 (UNKNOWN, but assumed to be working right in current code) Supposed to be multiple favorite ths
 Most expensive houses not sorted by price (Ryan)
 Most popular houses seems to be sorted ascending (Ryan)
+Register user labels no spaces - Aaron
 labels for th fields in statistics are wrong
 View Keywords says "TH Name: 'Keyword'"
-Some view results buttons should say submit because they don't actually view anything
+Some view results buttons should say submit because they don't actually view anything - Aaron
 Remove keyword seems broken
-Make url textbox type text
-typo in link from browse th to avails
-add checkout and back to reserves link in avails
-reserve checkout broken
+Make url textbox type text - Aaron - Done
+typo in link from browse th to avails - Aaron - Fixed
+add checkout and back to reserves link in avails - Aaron - Done
+reserve checkout broken - Aaron - Fixed

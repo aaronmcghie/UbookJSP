@@ -44,15 +44,16 @@ if(request.getParameter("login") != null){
 else if(request.getParameter("registerUser") != null){
 	%>
 	Registration Information:
-	<form action = "User.jsp" method=post>
-	UserName:<input type = "text" name = "userName" value = "user name"/><br/><br/>
-	Password:<input type = "text" name = "password" value = "password"/><br/><br/>
-	FullName:<input type = "text" name = "fullName" value = "Full Name"/><br/><br/>
-	Address:<input type = "text" name = "address" value = "Address"/><br/><br/>
-	phoneNumber:<input type = "text" name = "phoneNumber" value = "1234567890"/><br/><br/>
+
+	<form action = "User.jsp" method=post onsubmit="return check_all_fields(this)">
+	Username:<input type = "text" name = "userName"/><br/><br/>
+	Password:<input type = "text" name = "password"/><br/><br/>
+	Full Name:<input type = "text" name = "fullName"/><br/><br/>
+	Address:<input type = "text" name = "address"/><br/><br/>
+	Phone Number:<input type = "text" name = "phoneNumber"/><br/><br/>
 	admin:<input type = "checkbox" name = "admin"/><br/><br/>
 	
-	<input type = "submit" name="doneRegister" value="RegisterUser"/>
+	<input type = "submit" name="doneRegister" value="Register User!"/>
 	<br>
 	<a href=MainMenu.jsp>Back to main</a>
 	</form>
