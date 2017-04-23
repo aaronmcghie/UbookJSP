@@ -62,7 +62,7 @@
   			From Date: <input type = "text" name = "from" value = "2017-06-01"/><br>
   			To Date: <input type = "text" name = "to" value = "2017-06-01"/><br>
   			Price: <input type = "text" name = "price" value = "0"/><br>
-  			<input type = "submit" name="updateChangeAvailability" value="view results"/><br>
+  			<input type = "submit" name="updateChangeAvailability" value="Submit"/><br>
   			</form>
   		    <%
     	}
@@ -89,7 +89,7 @@
   			From Date: <input type = "text" name = "from" value = "2017-06-01"/><br>
   			To Date: <input type = "text" name = "to" value = "2017-06-01"/><br>
   			Price: <input type = "text" name = "price" value = "0"/><br>
-  			<input type = "submit" name="updateAddAvailability" value="view results"/><br>
+  			<input type = "submit" name="updateAddAvailability" value="Submit"/><br>
   			</form>
   		    <%
     	}
@@ -113,7 +113,7 @@
   		    <form action = "Avails.jsp" method=post>
   			House ID:<input type = "text" name = "THID" value = "0"/><br>
   			Availability ID:<input type = "text" name = "PID" value = "0"/><br>
-  			<input type = "submit" name="updateRemoveAvailability" value="view results"/><br>
+  			<input type = "submit" name="updateRemoveAvailability" value="Submit"/><br>
   			</form>
   		    <%
     	}
