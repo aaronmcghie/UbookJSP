@@ -1,11 +1,11 @@
-Register user labels no spaces
-user actions link links to self in user page
+Register user labels no spaces - Aaron
+user actions link links to self in user page - Not really important, bottom priority
 Supposed to be multiple favorite ths
 Most expensive houses not sorted by price
 Most popular houses seems to be sorted ascending
 labels for th fields in statistics are wrong
 View Keywords says "TH Name: 'Keyword'"
-Some view results buttons should say submit because they don't actually view anything
+Some view results buttons should say submit because they don't actually view anything - Aaron
 Remove keyword seems broken
 Make url textbox type text - Aaron - Done
 typo in link from browse th to avails - Aaron - Fixed
